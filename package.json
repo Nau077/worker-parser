@@ -1,0 +1,32 @@
+{
+  "name": "worker-parser",
+  "version": "1.0.0",
+  "description": "parser for workers helpers",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nau077/worker-parser.git"
+  },
+  "author": "Roman T, Valery G",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nau077/worker-parser/issues"
+  },
+  "homepage": "https://github.com/Nau077/worker-parser#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "google-search-results-serpwow": "0.0.14",
+    "graphql": "^15.5.0",
+    "graphql-tag": "^2.11.0",
+    "restify": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
