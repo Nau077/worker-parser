@@ -1,0 +1,5 @@
+# import SearchResult from './SearchResult.graphql'
+
+type Query {
+    getResult(searchString: String!): [SearchResult]
+}
