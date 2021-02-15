@@ -1,0 +1,5 @@
+ type SearchResult {
+        title: String!,
+        url: String!,
+        description: String!
+    }
