@@ -36,9 +36,9 @@ const parseAndSearch = async (searchString, site="") => {
 
              const description = children[1].getElementsByClassName("BNeawe s3v9rd AP7Wnd")[0] 
    
-             if (children[1].querySelector("a") && description && description.textContent && description.textContent.length) { 
-               parse_obj["description"] = children[1].getElementsByClassName("BNeawe s3v9rd AP7Wnd")[0].textContent
-             }
+            // if (children[1].querySelector("a") && description && description.textContent && description.textContent.length) { 
+               parse_obj["description"] = children[1].textContent
+            // }
    
              parser_result.push(parse_obj)
            }
