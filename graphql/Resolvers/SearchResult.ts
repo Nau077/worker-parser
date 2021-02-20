@@ -19,6 +19,7 @@ const searchResultResolvers:IResolvers = {
     Query: {
         getResult: async (searchString:string)  => {
             try {
+                console.log(searchString)
                 const searchParams = searchString
                 const results = await search()
                 return [searchResult]
