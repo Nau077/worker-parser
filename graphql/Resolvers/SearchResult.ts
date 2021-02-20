@@ -2,9 +2,9 @@ import { IResolvers } from "graphql-tools"
 import  search  from "../../parser"
 
 interface SearchResult {
-    title: string,
-    url: string,
-    description: string
+    title?: string,
+    url?: string,
+    description?: string
 }
 
 
@@ -17,12 +17,11 @@ const searchResult:SearchResult = {
 
 const searchResultResolvers:IResolvers = {
     Query: {
-        getResult: async (searchString:string)  => {
+        getResult: async (_, {searchString, site})  => {
             try {
                 console.log(searchString)
-                const searchParams = searchString
-                const results = await search()
-                return [searchResult]
+                const results = await search(searchString, site)
+                return results
             }
             catch (e) {
                 console.log(e)
