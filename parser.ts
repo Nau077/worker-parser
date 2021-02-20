@@ -30,7 +30,7 @@ const parseAndSearch = async (searchString, site="") => {
            let parse_obj = {}
    
            if (children[0].querySelector("a") && children[0].querySelector("a").href) {
-             parse_obj["url"] = children[0].querySelector("a").href
+             parse_obj["url"] = decodeURI(decodeURI(children[0].querySelector("a").href))
              parse_obj["title"] = children[0].getElementsByClassName("BNeawe vvjwJb AP7Wnd")[0].textContent
              }
 
