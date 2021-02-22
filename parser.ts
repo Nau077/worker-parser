@@ -11,8 +11,8 @@ var fileName = __dirname + "/parse.html";
 // const search = google.customsearch("v1")
 // search.context._options.auth = key
 
-const parseAndSearch = async () => {
-    const googleUrl = "https://www.google.com/search?q=котопес"
+const parseAndSearch = async (searchString, site="") => {
+    const googleUrl = `https://www.google.com/search?q=${searchString}${site ? `+site%3A${site}` : ""}`
     const sample = "https://www.npmjs.com/package/cheerio"
     const response = await got(googleUrl)
     const stream = fs.createWriteStream(fileName);
@@ -20,27 +20,9 @@ const parseAndSearch = async () => {
       stream.end(response.body)
     })
 
-    /*
-    const $ = cheerio.load(response.body)
-    const $results = $('body').find(".ZINbbc.xpd.O9g5cc.uUPGi").filter()
-
-    $results.each((i,result:any) => {
-       
-      //console.log(`${i}. ${result.childNodes}`)
-
-        //console.log(result.children[0].children[0].data)
-        if (i===0) {
-          console.log(result)
-        }
-    })
-        */
-
        let parser_result = []
 
        const dom = new JSDOM(response.body)
-       // dom.window.document.querySelectorAll('h3').forEach((a) => {
-       //   console.log(a.textContent)
-       // })
        const nodeArray = Array.from(dom.window.document.getElementsByClassName("ZINbbc xpd O9g5cc uUPGi"))
        nodeArray.forEach( (a:HTMLDivElement) => {
          const children = Array.from(a.getElementsByClassName("kCrYT"))
@@ -48,17 +30,15 @@ const parseAndSearch = async () => {
            let parse_obj = {}
    
            if (children[0].querySelector("a") && children[0].querySelector("a").href) {
-             parse_obj["title"] = children[0].querySelector("a").href
-             parse_obj["url"] = children[0].getElementsByClassName("BNeawe vvjwJb AP7Wnd")[0].textContent
+             parse_obj["url"] = decodeURI(decodeURI(children[0].querySelector("a").href))
+             parse_obj["title"] = children[0].getElementsByClassName("BNeawe vvjwJb AP7Wnd")[0].textContent
              }
-   
-             // console.log(children[0].querySelector("a").href)
-             // console.log(children[0].getElementsByClassName("BNeawe vvjwJb AP7Wnd")[0].textContent)
+
              const description = children[1].getElementsByClassName("BNeawe s3v9rd AP7Wnd")[0] 
    
-             if (children[1].querySelector("a") && description && description.textContent && description.textContent.length) { 
-               parse_obj["description"] = children[1].getElementsByClassName("BNeawe s3v9rd AP7Wnd")[0].textContent
-             }
+            // if (children[1].querySelector("a") && description && description.textContent && description.textContent.length) { 
+               parse_obj["description"] = children[1].textContent
+            // }
    
              parser_result.push(parse_obj)
            }
