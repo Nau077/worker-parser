@@ -25,13 +25,16 @@ const parseAndSearch = async (searchString, site="") => {
           let parse_obj = {}
           let url
           if (children[0].querySelector("a") && children[0].querySelector("a").href) {
+
               url = decodeURI(decodeURI(children[0].querySelector("a").href))
              parse_obj["title"] = children[0].getElementsByClassName("BNeawe vvjwJb AP7Wnd")[0].textContent
             }
 
             if (!url) return 
 
-            parse_obj["url"] = url.match(/http(.+)/i)[0];
+            let str = url.match(/http(.+)/i)[0]
+            
+            parse_obj["url"] =  str.substring(0, str.indexOf('&sa') + '&sa'.length).slice(0, -3);
             parse_obj["description"] = children[1].textContent
              
             parser_result.push(parse_obj)
