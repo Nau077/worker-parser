@@ -17,7 +17,6 @@ const searchResultResolvers:IResolvers = {
     Query: {
         getResult: async (_, {searchString, site, page})  => {
             try {
-                console.log(searchString)
                 const results = await search(searchString, site, page)
                 return results
             }
