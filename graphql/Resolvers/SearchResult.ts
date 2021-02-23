@@ -7,8 +7,6 @@ interface SearchResult {
     description?: string
 }
 
-
-
 const searchResult:SearchResult = {
     title: "Niggers",
     url: "niggers.com/niggers",
@@ -17,10 +15,10 @@ const searchResult:SearchResult = {
 
 const searchResultResolvers:IResolvers = {
     Query: {
-        getResult: async (_, {searchString, site})  => {
+        getResult: async (_, {searchString, site, page})  => {
             try {
                 console.log(searchString)
-                const results = await search(searchString, site)
+                const results = await search(searchString, site, page)
                 return results
             }
             catch (e) {
