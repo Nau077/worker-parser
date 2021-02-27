@@ -97,11 +97,3 @@ export default {
     }
 }
 </script>
-
-<style lang="">
-
-.form-control.is-invalid.background-size {
-    margin-right: 2px;
-};
-    
-</style>
