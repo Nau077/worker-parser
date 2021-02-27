@@ -3,14 +3,9 @@ import schema from "./graphql/newSchema"
 const express = require('express')
 const cors = require('cors')
 
-
 const app = express()
 app.use(cors())
 
-// const server = new ApolloServer({
-//   typeDefs: executableSchema.typeDefs,
-//   resolvers: executableSchema.resolvers
-// })
 const server: ApolloServer = new ApolloServer({
   schema
 })
