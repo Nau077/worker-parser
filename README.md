@@ -1,12 +1,13 @@
 
 
-*команды make вводить в корне проекта*
+**команды make вводить в корне проекта**
+
 **Установка зависимостей:**
 >  make build/client 
 >  make build/server
 **Запуск:**
 >  make run
-*или*
+**или**
 > make run/server
- затем
+**затем**
 > make run/client 
