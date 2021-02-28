@@ -1,4 +1,5 @@
 # import SearchResult from './SearchResult.graphql'
+# import FetchSites from './FetchSites.graphql'
 
 type Query {
     getResult(searchString: String!, site: String, dateRange: String, page: String): [SearchResult],
