@@ -1,5 +1,6 @@
 # import SearchResult from './SearchResult.graphql'
 
 type Query {
-    getResult(searchString: String!, site: String, dateRange: String, page: String): [SearchResult]
+    getResult(searchString: String!, site: String, dateRange: String, page: String): [SearchResult],
+    fetchSites(searchString: String!, name: String):[FetchSites]
 }

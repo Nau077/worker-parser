@@ -31,7 +31,7 @@
                     </div>
                      <div class="form-group col">
                         <label>Найти по дату:</label>
-                        <Field name="dob" type="date" class="form-control" :class="{ 'is-invalid': errors.dob }" />
+                        <Field name="dab" type="date" class="form-control" :class="{ 'is-invalid': errors.dob }"/>
                         <div class="invalid-feedback">{{errors.dob}}</div>
                     </div>
                 </div>
@@ -46,6 +46,7 @@
 <script>
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
+import { ref } from "vue";
 
 export default {
     components: {
@@ -77,6 +78,7 @@ export default {
         }
     },
     setup() {
+        const endDate = ref(new Date());
         const schema = Yup.object().shape({
             title: Yup.string()
                 .required('Поле обязательно'),
@@ -91,9 +93,18 @@ export default {
         }
 
         return {
+            endDate,
             schema,
             onSubmit
         };
     }
 }
 </script>
+<style>
+.form-control.is-invalid {
+    background-position: right calc(.375em + 2.1875rem) center;
+    padding-right: calc(1.5em + -1.25rem)
+}
+
+
+</style>
