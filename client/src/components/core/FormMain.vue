@@ -1,21 +1,21 @@
 <template>
     <div class="card m-3">
-        <h5 class="card-header">Worker-news-parser</h5>
-        <div class="card-body">
+        <h5 class="p-4 bg-red-600 text-left font-bold text-2xl text-white">Worker Parser</h5>
+        <div class="p-4">
             <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors }">
-                <div class="form-row">
-                    <div class="form-group col">
+                <div class="grid-cols-2 grid gap-8">
+                    <div class="flex flex-col">
                         <label>Выберите сайт</label>
-                        <Field name="title" as="select" class="form-control" :class="{ 'is-invalid': errors.title }">
-                            <option v-for="site in sites" :key="site.id">
-                                <div>{{site.name}}</div>
+                        <Field name="sites" as="select" class="p-2 border rounded-2xl" :class="{ 'is-invalid': errors.title }">
+                            <option class="" v-for="site in sites" :key="site.id">
+                                {{site.name}}
                             </option>
                         </Field>
                         <div class="invalid-feedback">{{errors.title}}</div>
                     </div>
-                     <div class="form-group col">
+                     <div class="mb-4">
                         <label>Выберите или введите ключевые слова</label>
-                        <Field name="title" as="select" class="form-control" :class="{ 'is-invalid': errors.title }">
+                        <Field name="key_words" as="select" class="form-control" :class="{ 'is-invalid': errors.title }">
                             <option v-for="key_word in key_words" :key="key_word.id">
                                 <div>{{key_word.name}}</div>
                             </option>
@@ -23,13 +23,13 @@
                         <div class="invalid-feedback">{{errors.title}}</div>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col">
+                <div class="grid-cols-2 grid gap-8 mb-4">
+                    <div>
                         <label>Найти с даты:</label>
                         <Field name="dob" type="date" class="form-control" :class="{ 'is-invalid': errors.dob }" />
                         <div class="invalid-feedback">{{errors.dob}}</div>
                     </div>
-                     <div class="form-group col">
+                     <div>
                         <label>Найти по дату:</label>
                         <Field name="dab" type="date" class="form-control" :class="{ 'is-invalid': errors.dob }"/>
                         <div class="invalid-feedback">{{errors.dob}}</div>
