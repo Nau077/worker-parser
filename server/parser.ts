@@ -9,7 +9,9 @@ const cssRootClass = "ZINbbc xpd O9g5cc uUPGi"
 const cssMainRefClass = "kCrYT"
 const cssTitleClass = "BNeawe vvjwJb AP7Wnd"
 
+
 const parseAndSearch = async (searchString, site="", dateRange="", page ) => {
+
 
     const googleUrl = `https://www.google.com/search?q=${searchString}${dateRange ? `+daterange%3A${dateRange}` : ""}${site ? `+site%3A${site}` : ""}&start=${page}`
     const response = await got(googleUrl)
