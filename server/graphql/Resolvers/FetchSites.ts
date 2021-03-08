@@ -5,7 +5,7 @@ const sites_str: any = fs.readFileSync("./config/sites.json");
 
 const fetchSitesResolvers:IResolvers = {
     Query: {
-        fetchSites: (_)  => {
+        fetchSites: ()  => {
             const sites = JSON.parse(sites_str)
  
             return sites

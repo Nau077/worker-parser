@@ -1,3 +1,0 @@
- type FetchSites {
-        name: String!
-    }
