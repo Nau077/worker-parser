@@ -1,13 +1,19 @@
 import { createStore } from 'vuex'
-//import axios from "axios"
+import axios from "axios"
 
-export default createStore({
+const store = createStore({
   state: {
+    sites: {}
   },
+
   mutations: {
+   ADD_SITES(state, payload) {
+      state.sites = payload
+   }
   },
-  /*actions: {
-    async fetchSites() {
+ 
+  actions: {
+    async fetchSites({commit}) {
       let sites
       try {
         sites = await axios({
@@ -27,11 +33,15 @@ export default createStore({
               `
           }
         })
+
+        console.log(sites)
+        commit("ADD_SITES", sites)
       } catch (error) {
-        
+        console.error(error)
       }
     }
-  },*/
-  modules: {
   }
 })
+
+
+export default store

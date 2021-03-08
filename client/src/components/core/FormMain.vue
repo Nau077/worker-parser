@@ -77,6 +77,16 @@ export default {
             ],
         }
     },
+
+    async mounted() {
+        // await this.fetchSites()
+        await this.$store.dispatch('fetchSites')
+        console.log(this.$store.state)
+    },
+
+    // methods: {
+    //    ...mapActions(["fetchSites"]),
+    // },
     setup() {
         const endDate = ref(new Date());
         const schema = Yup.object().shape({
