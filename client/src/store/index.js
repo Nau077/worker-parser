@@ -14,6 +14,7 @@ const store = createStore({
  
   actions: {
     async fetchSites({commit}) {
+      console.log(123)
       let sites
       try {
         sites = await axios({
@@ -21,21 +22,16 @@ const store = createStore({
           method: 'post',
           data: {
             query: `
-              query PostsForAuthor {
-                author(id: 1) {
-                  firstName
-                    posts {
-                      title
-                      votes
-                    }
-                  }
+              { fetchSites{
+                name
                 }
+              }
               `
           }
         })
 
-        console.log(sites)
-        commit("ADD_SITES", sites)
+        commit("ADD_SITES", sites.data.data.fetchSites)
+        return sites.data.data.fetchSites
       } catch (error) {
         console.error(error)
       }

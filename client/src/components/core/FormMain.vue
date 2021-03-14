@@ -80,8 +80,11 @@ export default {
 
     async mounted() {
         // await this.fetchSites()
-        await this.$store.dispatch('fetchSites')
-        console.log(this.$store.state)
+        await this.$store.dispatch('fetchSites').then(
+            (sites) => {
+                this.sites = sites
+            }
+        )
     },
 
     // methods: {
